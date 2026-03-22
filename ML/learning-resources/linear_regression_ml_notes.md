@@ -223,7 +223,7 @@ for i in range(1, len(X.columns) + 1):
 The best method for feature selection depends on the specific dataset and the goals of the analysis. However, **Bidirectional Elimination** is often considered a robust approach as it combines the strengths of both backward elimination and forward selection, allowing for a more comprehensive evaluation of features. It can help in identifying the most significant features while also ensuring that irrelevant features are removed, leading to a more optimal model.
 
 
-## C:
+## Feature Scaling in Multiple Linear Regression:
 
 In Multiple Linear Regression, feature scaling is not always necessary because the coefficients of the model will adjust accordingly to the scale of the features. The model learns the coefficients for each feature, and these coefficients reflect the scale of the features. For example, if one feature has a much larger scale than another, the coefficient for that feature will be smaller to compensate for its larger values.
 
@@ -231,3 +231,46 @@ Example : Feature A, Feature B, Feature C
 - Feature A has values in the range of 0 to 1 (small scale).
 - Feature B has values in the range of 0 to 1000 (large scale).
 - The coefficient for Feature A might be larger than the coefficient for Feature B to account for the difference in scale.
+
+
+## Evaluvating the Model Performance:
+
+To evaluate the performance of a Multiple Linear Regression model, you can use several metrics, including:
+1. **Mean Absolute Error (MAE)**: This metric measures the average absolute difference between the actual and predicted values. It gives an idea of how much the predictions deviate from the actual values on average.
+2. **Mean Squared Error (MSE)**: This metric measures the average squared difference between the actual and predicted values. It penalizes larger errors more than smaller ones, making it useful for identifying models that have large prediction errors.
+3. **R-squared (R2)**: This metric measures the proportion of the variance in the dependent variable that is predictable from the independent variables. It ranges from 0 to 1, where a higher value indicates a better fit of the model to the data.
+
+
+Formula and Example of R-squared (R2):
+```python
+from sklearn.metrics import r2_score
+r2 = r2_score(y_test, y_hat)
+print(f"R-squared (R2): {r2:.2f}")
+```
+
+Formula for R-squared (R2):
+$$R^2 = 1 - \frac{SS_{res}}{SS_{tot}}$$
+Where:
+- $SS_{res}$ is the sum of squares of residuals (the difference between actual and predicted values).
+- $SS_{tot}$ is the total sum of squares (the difference between actual values and the mean of the actual values).
+
+Residuals are calculated as:
+$$residuals = y_{actual} - y_{predicted}$$
+
+Squared residuals are calculated as:
+$$squared\_residuals = (y_{actual} - y_{predicted})^2$$
+
+Sum of squares of residuals (SS_res) is calculated as:
+$$SS_{res} = \sum (y_{actual} - y_{predicted})^2$$
+
+Total sum of squares (SS_tot) is calculated as:
+$$SS_{tot} = \sum (y_{actual} - \bar{y}_{actual-mean})^2$$
+
+Total Sum of Squares ($SS_{tot}$): How far the data points are from the Mean (Average) line. This represents the total variance in your data.
+
+Why R-squared is important:
+- It provides a measure of how well the independent variables explain the variability in the dependent variable.
+- It helps in comparing different models and selecting the one that best fits the data.
+- It gives an indication of the goodness of fit of the model.
+
+In this example, `y_test` represents the actual values of the dependent variable, and `y_hat` represents the predicted values from the model. The `r2_score` function calculates the R-squared value, which indicates how well the model explains the variance in the dependent variable. A higher R-squared value (closer to 1) indicates a better fit of the model to the data.
