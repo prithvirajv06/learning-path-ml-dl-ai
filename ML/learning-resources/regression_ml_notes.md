@@ -12,6 +12,9 @@
     2. [Backward Elimination](#backward-elimination)
     3. [Forward Selection](#forward-selection)
     4. [Bidirectional Elimination](#bidirectional-elimination)
+    5. [All Possible Models](#all-possible-models)
+    6. [Best one from this methods:](#best-one-from-this-methods)
+10. [Feature Scaling in Multiple Linear Regression:](#feature-scaling-in-multiple-linear-regression)
 
 
 
@@ -218,3 +221,13 @@ for i in range(1, len(X.columns) + 1):
 
 ### Best one from this methods:
 The best method for feature selection depends on the specific dataset and the goals of the analysis. However, **Bidirectional Elimination** is often considered a robust approach as it combines the strengths of both backward elimination and forward selection, allowing for a more comprehensive evaluation of features. It can help in identifying the most significant features while also ensuring that irrelevant features are removed, leading to a more optimal model.
+
+
+## C:
+
+In Multiple Linear Regression, feature scaling is not always necessary because the coefficients of the model will adjust accordingly to the scale of the features. The model learns the coefficients for each feature, and these coefficients reflect the scale of the features. For example, if one feature has a much larger scale than another, the coefficient for that feature will be smaller to compensate for its larger values.
+
+Example : Feature A, Feature B, Feature C
+- Feature A has values in the range of 0 to 1 (small scale).
+- Feature B has values in the range of 0 to 1000 (large scale).
+- The coefficient for Feature A might be larger than the coefficient for Feature B to account for the difference in scale.
